@@ -25,7 +25,7 @@
 
         /*add your custom css rules here*/
 
-        .button{
+        .button {
             float: left;
             height: 40px;
             width: 40px;
@@ -35,17 +35,31 @@
             border-radius: 5px;
             cursor: pointer;
             color: white;
-            
         }
 
-        .button.eql{
+        .button.eql {
             background-color: #08a047;
             color: white;
         }
 
-        .button.operator{
+        .button.operator {
             background-color: #20509d;
             color: white;
+        }
+
+        #calculator-container {
+            width: 300px;
+            margin: 20px auto;
+            background-color: rgb(61, 10, 19);
+            border-color: #000;
+        }
+
+        #display-area {
+            height: 40px;
+            margin-bottom: 10px;
+            padding: 5px;
+            text-align: right;
+            background-color: #e0dbdb;
         }
     </style>
 </head>
@@ -53,7 +67,8 @@
 <body class="dark:text-white light:text-black">
 
     <!-- your app code goes here -->
-    <div style="width:300px;margin:20px auto;background-color:aqua">
+    <div id="calculator-container">
+        <div id="display-area"></div>
         <div class="button">1</div>
         <div class="button">2</div>
         <div class="button">3</div>
@@ -82,7 +97,7 @@
         const sendPrivateApiRequest = async () => {
             // your code here:
             // sendRequestToParent({ cat: 'getAssets' })
-        }        
+        }
 
         const acceptPrivateApiResponse = async (data) => {
             // process received data here:
