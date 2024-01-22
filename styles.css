@@ -66,6 +66,14 @@ body {
     border: 1px solid #000000;
 }
 
+.button.del {
+    background-color: #f25353;
+    border: 1px solid #000000;
+}
+.button.tog {
+    background-color: #2d2d2d;
+    border: 1px solid #000000;
+}
 .button.eql:hover {
     background-color: #1e2a7e; /* Change background color on hover */
 }
