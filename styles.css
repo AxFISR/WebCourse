@@ -1,0 +1,75 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+}
+
+#calculator-container {
+    width: 300px;
+    margin: 20px auto;
+    background-color: #83838384;
+    border: 2px solid #020202;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.display-area {
+    height: 40px;
+    padding: 5px;
+    text-align: right;
+    background-color: #e0dbdb;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button {
+    height: 40px;
+    width: 75px;
+    margin: 5px;
+    background-color: #878887;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s; /* Smooth transition for background color */
+
+}
+
+.button:hover {
+    background-color: #6c6c6c; /* Change background color on hover */
+}
+
+.button-text {
+    font-weight: bold;
+    color: #000000;
+}
+
+.button.eql {
+    background-color: #323dd8;
+    border: 1px solid #000000;
+}
+
+.button.eql:hover {
+    background-color: #1e2a7e; /* Change background color on hover */
+}
+
+.button.active {
+    background-color: #32cd32; /* Change background color for the active state of 2nd toggle*/
+}

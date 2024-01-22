@@ -4,113 +4,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MTW App Template</title>
-    <!--
-        The tailwind CDN is designed for development purposes only, and is not the best choice for production.
-        Read more here: https://tailwindcss.com/docs/installation 
-    -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- example for dark theme styling when using tailwind cdn -->
-    <style>
-        /*examples for dark/light themes*/
-        .dark .dark\:text-white {
-            color: #fff;
-        }
-        .dark .dark\:bg-gray-800 {
-            background-color: #1f2937;
-        }
-        .light .light\:text-black {
-            color: #000;
-        }
-
-        /*add your custom css rules here*/
-
-        .button {
-            float: left;
-            height: 40px;
-            width: 40px;
-            padding: 25px;
-            margin: 5px;
-            background-color: rgb(63, 47, 25);
-            border-radius: 5px;
-            cursor: pointer;
-            color: white;
-        }
-
-        .button.eql {
-            background-color: #08a047;
-            color: white;
-        }
-
-        .button.operator {
-            background-color: #20509d;
-            color: white;
-        }
-
-        #calculator-container {
-            width: 300px;
-            margin: 20px auto;
-            background-color: rgb(61, 10, 19);
-            border-color: #000;
-        }
-
-        #display-area {
-            height: 40px;
-            margin-bottom: 10px;
-            padding: 5px;
-            text-align: right;
-            background-color: #e0dbdb;
-        }
-    </style>
+    <title>Scientific Calculator</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="dark:text-white light:text-black">
 
     <!-- your app code goes here -->
     <div id="calculator-container">
-        <div id="display-area"></div>
-        <div class="button">1</div>
-        <div class="button">2</div>
-        <div class="button">3</div>
-        <div class="button">4</div>
-        <div class="button">5</div>
-        <div class="button">6</div>
-        <div class="button">7</div>
-        <div class="button">8</div>
-        <div class="button">9</div>
-        <div class="button">0</div>
-        <div class="button operator">+</div>
-        <div class="button operator">-</div>
-        <div class="button operator">*</div>
-        <div class="button operator">/</div>
-        <div class="button eql">=</div>
+        <input class="display-area" type="text">
+
+        <div class="button-group">
+            <div class="button">MC</div>
+            <div class="button">MR</div>
+            <div class="button">M+</div>
+            <div class="button">M-</div>
+            <div class="button">MS</div>
+            <div class="button">M^</div>
+        </div>
+
+        <div class="button-row">
+            <div class="button" onclick="handleButtonClick(this)">2nd</div>
+            <div class="button" onclick="handleButtonClick(this)">π</div>
+            <div class="button" onclick="handleButtonClick(this)">e</div>
+            <div class="button" onclick="handleButtonClick(this)">C</div>
+            <div class="button" onclick="handleButtonClick(this)">⌫</div>
+        </div>
+
+        <div class="button-row">
+            <div class="button" onclick="handleButtonClick(this)">x²</div>
+            <div class="button" onclick="handleButtonClick(this)">1/x</div>
+            <div class="button" onclick="handleButtonClick(this)">|x|</div>
+            <div class="button" onclick="handleButtonClick(this)">exp</div>
+            <div class="button" onclick="handleButtonClick(this)">mod</div>
+        </div>
+
+        <div class="button-row">
+            <div class="button" onclick="handleButtonClick(this)">√</div>
+            <div class="button" onclick="handleButtonClick(this)">(</div>
+            <div class="button" onclick="handleButtonClick(this)">)</div>
+            <div class="button" onclick="handleButtonClick(this)">n!</div>
+            <div class="button" onclick="handleButtonClick(this)">/</div>
+        </div>
+
+        <div class="button-row">
+            <div class="button" onclick="handleButtonClick(this)">x^y</div>
+            <div class="button button-text" onclick="handleButtonClick(this)">7</div>
+            <div class="button button-text" onclick="handleButtonClick(this)">8</div>
+            <div class="button button-text" onclick="handleButtonClick(this)">9</div>
+            <div class="button" onclick="handleButtonClick(this)">X</div>
+        </div>
+
+        <div class="button-row">
+            <div class="button" onclick="handleButtonClick(this)">10^x</div>
+            <div class="button button-text" onclick="handleButtonClick(this)">4</div>
+            <div class="button button-text" onclick="handleButtonClick(this)">5</div>
+            <div class="button button-text" onclick="handleButtonClick(this)">6</div>
+            <div class="button" onclick="handleButtonClick(this)">-</div>
+        </div>
+
+        <div class="button-row">
+            <div class="button" onclick="handleButtonClick(this)">log</div>
+            <div class="button button-text" onclick="handleButtonClick(this)">1</div>
+            <div class="button button-text" onclick="handleButtonClick(this)">2</div>
+            <div class="button button-text" onclick="handleButtonClick(this)">3</div>
+            <div class="button" onclick="handleButtonClick(this)">+</div>
+        </div>
+
+        <div class="button-row">
+            <div class="button" onclick="handleButtonClick(this)">ln</div>
+            <div class="button" onclick="handleButtonClick(this)">+/-</div>
+            <div class="button button-text" onclick="handleButtonClick(this)">0</div>
+            <div class="button" onclick="handleButtonClick(this)">.</div>
+            <div class="button eql" onclick="handleButtonClick(this)">=</div>
+        </div>
     </div>
     <!-- special scripts for integration in MTW gallery - must be placed at the bottom of the HTML after your code -->
-    <script>
-        // custom config for the MTW app 
-        const mtwAppConfig = {
-            border: true // app border in the MTW page                    
-        }
-
-        ///////////////////////////////////////////////////////
-        // implement this functions in order to use private API        
-        const sendPrivateApiRequest = async () => {
-            // your code here:
-            // sendRequestToParent({ cat: 'getAssets' })
-        }
-
-        const acceptPrivateApiResponse = async (data) => {
-            // process received data here:
-            // console.log(data)
-        }
-
-        // use this in order to send on document load
-        document.addEventListener('DOMContentLoaded', () => {
-            // your code here:
-            //sendRequestToParent({ method: 'getAssets' })
-        })
-
-    </script>
+    <script src="app.js"></script>
     <script src="https://morethanwallet.com/appstore/index.js"></script>
 </body>
 
